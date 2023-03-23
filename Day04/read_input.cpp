@@ -32,8 +32,8 @@ Input read_input(std::string filename) {
 	std::getline(input, in);
 	out.first = SplitIntsBy(in, ','); //ASSIGNING FIRST VALUE IN PAIR
 
-	vvi STable;
-	vvvi ATables;
+	vvi STable; // single table being built
+	vvvi ATables; // all tables
 	while (std::getline(input, in)) {
 		if (in == "") {
 			ATables.push_back(STable);
