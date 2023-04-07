@@ -19,7 +19,6 @@ vi SplitIntsBy(std::string ints, char separator) {
 			num.push_back(ints[i]);
 		}
 	}
-	std::cout << std::endl;
 	return SplitValues;
 }
 
@@ -32,8 +31,10 @@ Input read_input(std::string filename) {
 	std::getline(input, in);
 	out.first = SplitIntsBy(in, ','); //ASSIGNING FIRST VALUE IN PAIR
 
-	vvi STable; // single table being built
-	vvvi ATables; // all tables
+	std::getline(input, in);
+
+	vvi STable;
+	vvvi ATables;
 	while (std::getline(input, in)) {
 		if (in == "") {
 			ATables.push_back(STable);

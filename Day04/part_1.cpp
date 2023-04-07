@@ -4,23 +4,24 @@
 vi rolls;
 vvvi tables;
 
-bool CheckNum(int TableNum, int row, int column, int roll) {
-	int num = tables[TableNum][row][column];
-	if (num == roll) {
-		num = -1;
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-
 std::string part_1(const Input input) {
 	rolls = input.first;
 	tables = input.second;
 
-	std::cout << std::to_string(tables[3][4][2]) << " "
-		<< std::to_string(CheckNum(3, 4, 2, rolls[0])) << " "
-		<< std::to_string(tables[3][4][2]) << " ";
+	std::vector<Board> boards;
 
-	return "Part 1";
+	for (vvi table : tables) {
+		Board board(table);
+		boards.push_back(board);
+	}
+
+	for (int roll : rolls) {
+		for (Board board : boards) {
+			if (board.CheckTable(roll)) {
+				return std::to_string(board.GetScore());
+			}
+		}
+	}
+
+	return "";
+}
